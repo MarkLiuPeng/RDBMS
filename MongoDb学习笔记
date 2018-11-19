@@ -1,0 +1,71 @@
+
+
+=========================库的操作===============================
+use  db_name			#切换数据库
+show [dbs|collections]		#显示所有的数据库|集合
+db				#显示当前所处的数据库
+
+db.[db_name|collection_name].[insert|save]({"document_name":"value_name"......})	#创建数据库和向集合插入文档或是创建集合同时插入文档
+db.db_name|collection_name].find().options					#显示创建的数据库和集合
+options{
+pretty()			//以易读的方式
+
+}
+
+
+db.dropdatabase()				#删库
+
+
+
+#===============================文档记录查询===============================
+
+$lt,gt,lte,gte : "number_range"			#文档记录模糊查询(<,>,<=,>=)
+结合文档记录模糊查询   $gt,$lt			#x<value<y
+
+,				#and与运算
+$or:[{},{},......{}]		#or或运算
+
+{document_name:{$lt|gt|:number_range},$or:[{docume_1:value_1},{}......]
+#and or综合应用}
+
+	//  /^/   /$/			#正则匹配模糊查询文档记录
+
+$type					#文档记录数据类型匹配
+
+limit(document_number)			#文档记录条目数控制函数
+skip(document_number)			#文档记录条目跳过函数
+sort({document_key:-1|1})		#文档记录排序函数
+-1:降序;1:升序
+
+
+
+
+#==========================集合的操作==============================
+
+
+db.collection.drop()				#删集
+db.collection.update({"old_document_name":"old_value_name"},{regex_name,{"new_document_name":"new_value_name"},{options})#更集
+
+$set			//插入
+$unset			//回滚me,{"new_document_name":"new_value_name"},{options})#更集
+
+options{
+	mutil{true|false}	//可指定更新范围
+}
+
+db.createcollection("collection_name",{options})		#创建集合
+options{
+	size:				//尺寸
+	max:				//个数
+	capped|autoIndexId		//自动增长
+
+}
+db.collection.[remove|delete]()					#删除集合
+
+
+
+#======================索引的操作==============================
+db.collection_name.createIndex({"document_name":"1|-1"},options)	#创建索引
+
+
+

@@ -53,7 +53,8 @@ options{
 	mutil{true|false}	//可指定更新范围
 }
 
-db.createcollection("collection_name",{options})		#创建集合
+db.createcollection("collection_name",{options})		#创建集合gu
+	#固定集合
 options{
 	size:				//尺寸
 	max:				//个数
